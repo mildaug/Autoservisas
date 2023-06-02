@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Cars: {{ block.super }}{% endblock title %}
+{% block content %}
+  <h1>Cars</h1>
+<form action="" method="get">
+  <input name="query" type="text">
+  <button type="submit">&#128269;</button>
+
+</form>
+{% with car_list as page_obj %}
+  {% include "includes/paginator_nav.html" %}
+  {% endwith %}
+
+  <ul>
+    {% for car in car_list %}
+        <li><a href="{% url 'car_detail' car.pk %}">{{ car.model }}</a></li>
+    {% endfor %}
+  </ul>
+
+{% with car_list as page_obj %}
+{% include "includes/paginator_pages.html" %}
+{% endwith %}
+{% endblock %}

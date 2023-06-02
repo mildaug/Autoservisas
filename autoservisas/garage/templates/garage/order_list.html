@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block title %}Orders: {{ block.super }}{% endblock title %}
+{% block content %}
+  <h1>Orders</h1>
+
+    {% include "includes/paginator_nav.html" %}
+
+  <ul>
+    {% for order in orders %}
+      <li>
+        <strong><a href="{% url 'order_detail' order.pk %}">Order #{{ order.id }}:</a></strong> {{ order.car }}<br>
+      </li>
+    {% empty %}
+      <li>No orders found.</li>
+    {% endfor %}
+  </ul>
+  
+{% include "includes/paginator_pages.html" %}
+{% endblock %}

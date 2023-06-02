@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Welcome to {{ block.super }}{% endblock title %}
+
+{% block content %}
+  <h1>Car detail</h1>
+{% if car.image %} 
+  <img class="car-image" src="{{ car.image.url }}">
+{% else %}
+  <img class="car-image" src="{% static 'garage/img/default_image.jpg' %}">
+{% endif %}
+  <p><strong>Owner:</strong> {{ car.customer }}</p>
+  <p><strong>Model:</strong> {{ car.model }}</p>
+  <p><strong>License Plate:</strong> {{ car.license_plate }}</p>
+  <p><strong>VIN Code:</strong> {{ car.vin }}</p>
+{% endblock %}

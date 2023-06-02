@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block title %}Services {{ block.super }}{% endblock title %}
+{% block content %}
+    <h1>Services</h1>
+{% with service_list as page_obj %}
+    {% include "includes/paginator_nav.html" %}
+    {% endwith %}
+
+    <ul>
+        {% for service in service_list %}
+            <li>{{ service }}</li>
+        {% endfor %}
+    </ul>
+
+{% with service_list as page_obj %}
+{% include "includes/paginator_pages.html" %}
+{% endwith %}
+{% endblock %}
