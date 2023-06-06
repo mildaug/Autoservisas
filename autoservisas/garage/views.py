@@ -1,19 +1,25 @@
 from django.shortcuts import render,  get_object_or_404
+from django.contrib.auth.mixins import LoginRequiredMixin
 from . models import Car, Order, Service
 from django.views.generic import ListView
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.views.generic import ListView
+from django.db.models.query import QuerySet
 
 
 def index(request):
     services_count = Service.objects.all().count()
-    orders_completed = Order.objects.filter(status__exact=2).count()
+    orders_completed = Order.objects.filter(status__exact="delivered").count()
     cars_count = Car.objects.all().count()
+    num_visits = request.session.get('num_visits', 1)
+    request.session['num_visits'] = num_visits + 1
 
     context = {
         'services_count': services_count,
         'orders_completed': orders_completed,
-        'cars_count': cars_count
+        'cars_count': cars_count,
+        'num_visits': num_visits,
     }
     return render(request, 'garage/index.html', context)
 
@@ -54,3 +60,14 @@ class OrderListView(ListView):
     context_object_name = 'orders'
     paginate_by = 3
     template_name = 'garage/order_list.html'
+
+class UserOrderListView(LoginRequiredMixin, ListView):
+    model = Order
+    template_name = 'garage/user_orders_list.html'
+    paginate_by = 3
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.filter(car__customer=self.request.user)
+        return qs
+    

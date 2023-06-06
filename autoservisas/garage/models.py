@@ -1,7 +1,10 @@
+from django.contrib.auth import get_user_model
+from datetime import date
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
 
+User = get_user_model()
 
 class CarModel(models.Model):
     brand = models.CharField(_("brand"), max_length=100, db_index=True)
@@ -25,14 +28,23 @@ class Car(models.Model):
     license_plate = models.CharField(_("license_plate"), max_length=20, db_index=True)
     model = models.ForeignKey(CarModel, verbose_name=_("model"), related_name="cars", on_delete=models.CASCADE)
     vin = models.CharField(_("VIN"), max_length=17, db_index=True)
-    customer = models.TextField(_("customer"), max_length=100, db_index=True)
+    note = models.TextField(_("note"), max_length=1000, null=True, blank=True)
 
     image = models.ImageField(
         _("image"), 
         upload_to="garage/car_images", 
         null=True, 
         blank=True,
-        )
+    )
+
+    customer = models.ForeignKey(
+        User,
+        verbose_name=('customer'),
+        on_delete=models.CASCADE,
+        related_name='cars',
+        null=True,
+        blank=True,
+    )
     
     class Meta:
         ordering = ["license_plate"]
@@ -40,11 +52,11 @@ class Car(models.Model):
         verbose_name_plural = _("cars")
 
     def __str__(self):
-        return self.license_plate
+        return f'{self.license_plate} {self.customer}'
 
     def get_absolute_url(self):
         return reverse("car_detail", kwargs={"pk": self.pk})
-
+    
 
 class Order(models.Model):
     date = models.DateField(_("date"), auto_now=False, auto_now_add=False, null=True, blank=True)
@@ -57,13 +69,24 @@ class Order(models.Model):
         verbose_name_plural = _("orders")
 
     STATUS = (
-        (0, "Not started"),
-        (1, "In progress"),
-        (2, "Delivered"),
-        (3, "Canceled"),
+        ("new", "New"),
+        ("processing", "Processing"),
+        ("delivered", "Delivered"),
+        ("cancelled", "Cancelled"),
     )
-    status = models.CharField(_("status"), max_length=1, choices= STATUS, blank=True, default=0, help_text="Statusas")
+    status = models.CharField(_("status"), max_length=20, choices= STATUS, blank=True, default='new', help_text="Status")
+    due_back = models.DateField(_('due back'), null=True, blank=True)
+
+    @property
+    def is_overdue(self):
+        if self.due_back and date.today() > self.due_back:
+            return True
+        return False
     
+    @property
+    def customer(self):
+        return self.car.customer
+
     def __str__(self):
         return f"Order {self.id}"
 
