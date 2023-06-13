@@ -1,7 +1,8 @@
 {% extends 'base.html' %}
-{% block title %}Services {{ block.super }}{% endblock title %}
+{% load static i18n %}
+{% block title %} {% trans "services"|capfirst %} {% endblock title %}
 {% block content %}
-    <h1>Services</h1>
+    <h1>{% trans "services"|capfirst %}</h1>
 {% with service_list as page_obj %}
     {% include "includes/paginator_nav.html" %}
     {% endwith %}

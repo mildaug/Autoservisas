@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block content %}
+<h1>{% trans "ordert request for"|capfirst %} {{ car.customer }} </h1>
+<form method="post" action="{{ request.path }}?car.customer={{ car.customer }}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">{% trans "cofirm order"|capfirst %}</button>
+</form>
+{% endblock %}

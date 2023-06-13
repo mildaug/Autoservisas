@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
-{% block title %}Bye {{ block.super }}{% endblock title %}
+{% load static i18n %}
+{% block title %}{% trans "bye!"|capfirst %}{% endblock title %}
 {% block content %}
-<h1>See you later, aligator</h1>
-<p><a href="{% url 'login' %}">Log in</a> again.</p>
+<h1>{% trans "see you later, aligator"|capfirst %}</h1>
+<p><a href="{% url 'login' %}">{% trans "log in"|capfirst %}</a> {% trans "again"|capfirst %}.</p>
 {% endblock content %}

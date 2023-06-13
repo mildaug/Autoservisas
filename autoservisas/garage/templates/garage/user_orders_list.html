@@ -1,23 +1,30 @@
 {% extends 'base.html' %}
-{% block title %}My Orders {{ block.super }}{% endblock title %}
+{% block title %}My orders{% endblock title %}
 {% block content %}
 <h1>My orders</h1>
 
 {% include "includes/paginator_nav.html" %}
 
-{% if order_list %}
+    {% if order_list %}
 <ul>
     {% for order in order_list %}
     <li class='order-status-{{ order.status }}'>
+        {% if order.status == 'new' %}
+        <a class="button" href="{% url 'order_update' order.pk %}">
+            {% if order.status == 'new' %}Update{% endif %}
+        </a>
+        {% if order.status == 'new' %}
+        <a class="button box-success" href="{% url 'order_delete' order.pk %}">Delete</a>
+        {% endif %}
+    {% endif %}
         <a href="{% url 'order_detail' order.pk %}">{{ order.date }}</a>
         {{ order.get_status_display }}{% if order.due_back %}, complete by {{ order.due_back }}{% endif %}
         {% if order.status != 'delivered' and order.is_overdue %}<span class='order_overdue'>OVERDUE!</span>{% endif %}
-        <span class='order-id'>{{ order.id }}</span>
     </li>
     {% endfor %}
 </ul>
-{%else %}
-<p class='box box-warning'>No orders yet</p>
+{% else %}
+<p class='box box-warning'>No orders yet.</p>
 {% endif %}
 {% include "includes/paginator_pages.html" %}
 {% endblock %}

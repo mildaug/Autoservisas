@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %}{% trans "update"|capfirst %} {{ block.super }} {% trans "profile" %} {% endblock title %}
+{% block content %}
+<h1>{% trans "update"|capfirst %} {{ user }} {% trans "profile"|capfirst %}</h1>
+<form method="post" action="{{ request.path }}" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ user_form.as_p }}
+    {{ profile_form.as_p }}
+    <button type="submit">{% trans "update"|capfirst %}</button>
+</form>
+{% endblock content %}

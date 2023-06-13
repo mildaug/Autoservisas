@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static i18n %}
+{% block title %} {% trans "sign up for"|capfirst %} {{ block.super }}{% endblock title %}
+{% block content %}
+<h1>{% trans "sign up for Milda's garage"|capfirst %}</h1>
+<form action="{{ request.path }}" method="post">
+    {% csrf_token %}
+    <p>
+        <label for="first_name">{% trans "first name"|capfirst %}</label>
+        <input type="text" name="first_name" value="{{ request.POST.first_name }}">
+    </p>
+    <p>
+        <label for="last_name">{% trans "last name"|capfirst %}</label>
+        <input type="text" name="last_name" value="{{ request.POST.last_name }}">
+    </p>
+    <p>
+        <label for="username">{% trans "username"|capfirst %}</label>
+        <input type="text" name="username" required value="{{ request.POST.username }}">
+        <br><small>{% trans "Case sensitive, must be unique."|capfirst %}</small>
+    </p>
+    <p>
+        <label for="email">{% trans "e-mail"|capfirst %}</label>
+        <input type="text" name="email" required value="{{ request.POST.email }}">
+    </p>
+    <p>
+        <label for="password">{% trans "password"|capfirst %}</label>
+        <input type="password" name="password" required>
+    </p>
+    <p>
+        <label for="password_confirm">{% trans "confirm password"|capfirst %}</label>
+        <input type="password" name="password_confirm" required>
+    </p>
+    <p><button type="submit">{% trans "confirm sign up"|capfirst %}</button></p>
+    
+    <p>{% trans "if you have already an account, you can"|capfirst %}<a href="{% url 'login' %}">{% trans "login"|capfirst %}</a> {% trans "instead"|capfirst %}.</p>
+</form>
+{% endblock content %}

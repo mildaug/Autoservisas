@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Deleting order {{ object.car }} to {{ block.super }}{% endblock title %}
+{% block content %}
+<h1>Conform deletion</h1>
+<strong>Order #: </strong>{{ order.id }}<br>
+<strong>Car: </strong>{{ order.car }}<br>
+<p class="{% if object.is_overdue %}order-overdue{% endif %}">Due date: {{ object.due_back }}</p>
+<form action="{{ request.path }}" method="post">
+    {% csrf_token %}
+    <button type="submit">Confirm deletion</button>
+    <a href="{% url 'user_orders_list' %}">Change my mind</a>
+</form>
+{% endblock content %}

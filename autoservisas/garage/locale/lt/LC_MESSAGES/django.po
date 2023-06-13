@@ -1,0 +1,283 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-12 14:35+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+
+#: .\garage\models.py:11
+msgid "brand"
+msgstr "markė"
+
+#: .\garage\models.py:12 .\garage\models.py:30
+#: .\garage\templates\garage\car_detail.html:19
+msgid "model"
+msgstr "modelis"
+
+#: .\garage\models.py:13
+msgid "year"
+msgstr "metai"
+
+#: .\garage\models.py:14
+msgid "engine"
+msgstr "variklis"
+
+#: .\garage\models.py:18
+msgid "car model"
+msgstr "automobilio modelis"
+
+#: .\garage\models.py:19
+msgid "car models"
+msgstr "automobilių modeliai"
+
+#: .\garage\models.py:29
+msgid "license_plate"
+msgstr "valstybinis numeris"
+
+#: .\garage\models.py:31 .\garage\templates\garage\car_detail.html:21
+msgid "VIN"
+msgstr "VIN"
+
+#: .\garage\models.py:32
+msgid "note"
+msgstr "pastaba"
+
+#: .\garage\models.py:33 .\garage\templates\garage\order_detail.html:9
+msgid "issue"
+msgstr "problema"
+
+#: .\garage\models.py:36
+msgid "image"
+msgstr "paveikslėlis"
+
+#: .\garage\models.py:53 .\garage\models.py:65
+#: .\garage\templates\garage\order_detail.html:7
+msgid "car"
+msgstr "automobilis"
+
+#: .\garage\models.py:54 .\garage\templates\base.html:19
+#: .\garage\templates\garage\car_list.html:3
+#: .\garage\templates\garage\car_list.html:5
+msgid "cars"
+msgstr "automobiliai"
+
+#: .\garage\models.py:64 .\garage\templates\garage\order_detail.html:8
+msgid "date"
+msgstr "data"
+
+#: .\garage\models.py:66 .\garage\models.py:102 .\garage\models.py:119
+msgid "price"
+msgstr "kaina"
+
+#: .\garage\models.py:67
+msgid "order_notes"
+msgstr "užsakymo pastabos"
+
+#: .\garage\models.py:71 .\garage\models.py:120 .\garage\models.py:136
+#: .\garage\templates\garage\order_detail.html:6
+#: .\garage\templates\garage\order_list.html:13
+msgid "order"
+msgstr "užsakymas"
+
+#: .\garage\models.py:72 .\garage\templates\base.html:20
+#: .\garage\templates\garage\order_list.html:3
+#: .\garage\templates\garage\order_list.html:5
+msgid "orders"
+msgstr "užsakymai"
+
+#: .\garage\models.py:80
+msgid "status"
+msgstr "statusas"
+
+#: .\garage\models.py:81
+msgid "due back"
+msgstr "terminas"
+
+#: .\garage\models.py:101
+msgid "title"
+msgstr "pavadinimas"
+
+#: .\garage\models.py:106 .\garage\models.py:117
+msgid "service"
+msgstr "paslauga"
+
+#: .\garage\models.py:107 .\garage\templates\base.html:18
+#: .\garage\templates\garage\index.html:10
+#: .\garage\templates\garage\service_list.html:3
+#: .\garage\templates\garage\service_list.html:5
+msgid "services"
+msgstr "paslaugos"
+
+#: .\garage\models.py:118
+msgid "quantity"
+msgstr "kiekis"
+
+#: .\garage\models.py:123
+msgid "order entry"
+msgstr "užsakymo įrašas"
+
+#: .\garage\models.py:124 .\garage\templates\garage\order_detail.html:11
+msgid "order entries"
+msgstr "užsakymo įrašai"
+
+#: .\garage\models.py:142
+msgid "reviewer"
+msgstr "peržiūrėjo"
+
+#: .\garage\models.py:147
+msgid "Reviewed"
+msgstr "peržiūrėta"
+
+#: .\garage\models.py:148
+msgid "content"
+msgstr "turinys"
+
+#: .\garage\models.py:152
+msgid "order review"
+msgstr "užsakymo peržiūra"
+
+#: .\garage\models.py:153
+msgid "order reviews"
+msgstr "užsakymų peržiūros"
+
+#: .\garage\templates\base.html:10 .\garage\templates\garage\index.html:6
+msgid "milda's garage"
+msgstr "Mildos garažas"
+
+#: .\garage\templates\base.html:16
+msgid "garage"
+msgstr "garažas"
+
+#: .\garage\templates\base.html:17
+msgid "home"
+msgstr "pagrindinis"
+
+#: .\garage\templates\base.html:23
+msgid "logout"
+msgstr "atsijungti"
+
+#: .\garage\templates\base.html:24
+msgid "my cars"
+msgstr "mano automobiliai"
+
+#: .\garage\templates\base.html:25
+msgid "my orders"
+msgstr "mano užsakymai"
+
+#: .\garage\templates\base.html:27
+msgid "login"
+msgstr "Prisijungti"
+
+#: .\garage\templates\base.html:28 .\garage\templates\base.html:33
+msgid "sign up"
+msgstr "registruotis"
+
+#: .\garage\templates\base.html:32
+msgid "admin"
+msgstr "Administratorius"
+
+#: .\garage\templates\garage\car_detail.html:4
+#: .\garage\templates\garage\car_detail.html:7
+msgid "car detail"
+msgstr "automobilio detalės"
+
+#: .\garage\templates\garage\car_detail.html:9
+msgid "order request"
+msgstr "užsakymo užklausa"
+
+#: .\garage\templates\garage\car_detail.html:18
+msgid "owner"
+msgstr "savininkas"
+
+#: .\garage\templates\garage\car_detail.html:20
+msgid "license plate"
+msgstr "valstybinis numeris"
+
+#: .\garage\templates\garage\index.html:4
+msgid "welcome to"
+msgstr "sveiki atvykę"
+
+#: .\garage\templates\garage\index.html:7
+msgid "welcome to garage paradise!"
+msgstr "sveiki atvykę į garažų rojų"
+
+#: .\garage\templates\garage\index.html:8
+msgid "some statistics"
+msgstr "šiek tiek statistikos"
+
+#: .\garage\templates\garage\index.html:11
+msgid "delivered orders"
+msgstr "įvykdyti užsakymai"
+
+#: .\garage\templates\garage\index.html:12
+msgid "repaired cars"
+msgstr "sutaisyti automobiliai"
+
+#: .\garage\templates\garage\index.html:13
+msgid "you're visiting us already for the"
+msgstr "mūsų puslapyje lankotės"
+
+#: .\garage\templates\garage\index.html:13
+msgid "time"
+msgstr "kartą"
+
+#: .\garage\templates\garage\order_detail.html:3
+#: .\garage\templates\garage\order_detail.html:5
+msgid "order detail"
+msgstr "užsakymo detalės"
+
+#: .\garage\templates\garage\order_detail.html:10
+msgid "total price"
+msgstr "galutinė kaina"
+
+#: .\garage\templates\garage\order_detail.html:18
+#: .\garage\templates\garage\order_list.html:16
+msgid "no orders found"
+msgstr "užsakymų nerasta"
+
+#: .\garage\templates\garage\order_detail.html:21
+msgid "comments"
+msgstr "komentarai"
+
+#: .\garage\templates\garage\order_detail.html:24
+msgid "leave your comment"
+msgstr "palikite komentarą"
+
+#: .\garage\templates\garage\order_detail.html:27
+msgid "post"
+msgstr "skelbti"
+
+#: .\garage\templates\garage\order_detail.html:31
+msgid "only superusers, staff members, and authors can post comments."
+msgstr "tik supervartotojas, personalas ar autorius gali palikti komentarą."
+
+#: .\garage\templates\garage\order_detail.html:37
+msgid "by"
+msgstr " "
+
+#: .\garage\templates\garage\order_request_form.html:4
+msgid "ordert request for"
+msgstr "užsakymo užklausa"
+
+#: .\garage\templates\garage\order_request_form.html:8
+msgid "cofirm order"
+msgstr "patvirtinti užsakymą"
+
+#: .\garage\views.py:97
+msgid "Review posted!"
+msgstr "Komentaras paskelbtas!"

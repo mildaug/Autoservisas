@@ -3,6 +3,7 @@ from datetime import date
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from django.urls import reverse
+from tinymce.models import HTMLField
 
 User = get_user_model()
 
@@ -29,6 +30,7 @@ class Car(models.Model):
     model = models.ForeignKey(CarModel, verbose_name=_("model"), related_name="cars", on_delete=models.CASCADE)
     vin = models.CharField(_("VIN"), max_length=17, db_index=True)
     note = models.TextField(_("note"), max_length=1000, null=True, blank=True)
+    issue = HTMLField(_("issue"), max_length=1000, null=True, blank=True)
 
     image = models.ImageField(
         _("image"), 
@@ -61,7 +63,8 @@ class Car(models.Model):
 class Order(models.Model):
     date = models.DateField(_("date"), auto_now=False, auto_now_add=False, null=True, blank=True)
     car = models.ForeignKey(Car, verbose_name=_("car"), related_name="orders", on_delete=models.CASCADE)
-    price = models.DecimalField(_("price"), max_digits=10, decimal_places=2, null=True, db_index=True)
+    price = models.DecimalField(_("price"), max_digits=10, decimal_places=2, default=0, db_index=True)
+    order_notes = HTMLField(_("order_notes"), max_length=1000, null=True, blank=True)
     
     class Meta:
         ordering = ["date", "id"]
@@ -125,3 +128,32 @@ class OrderEntry(models.Model):
 
     def get_absolute_url(self):
         return reverse("orderentry_detail", kwargs={"pk": self.pk})
+    
+
+class OrderReview(models.Model):
+    order = models.ForeignKey(
+        Order, 
+        verbose_name=_('order'), 
+        on_delete=models.CASCADE,
+        related_name='reviews',
+    )
+    reviewer = models.ForeignKey(
+        User, 
+        verbose_name=_("reviewer"), 
+        on_delete=models.SET_NULL,
+        related_name='order_reviews',
+        null=True, blank=True,
+    )
+    reviewed_at = models.DateTimeField(_("Reviewed"), auto_now_add=True)
+    content = models.TextField(_("content"), max_length=4000)
+
+    class Meta:
+        ordering = ['-reviewed_at']
+        verbose_name = _("order review")
+        verbose_name_plural = _("order reviews")
+
+    def __str__(self):
+        return f"{self.reviewed_at}: {self.reviewer}"
+
+    def get_absolute_url(self):
+        return reverse("orderreview_detail", kwargs={"pk": self.pk})

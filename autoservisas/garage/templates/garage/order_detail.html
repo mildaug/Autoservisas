@@ -1,31 +1,47 @@
 {% extends 'base.html' %}
-{% block title %}Welcome to {{ block.super }}{% endblock title %}
+{% load static i18n %}
+{% block title %} {% trans "order detail"|capfirst %} {% endblock title %}
 {% block content %}
-    <h1>Service Order Detail</h1>
-    <strong>Order #: </strong>{{ order.id }}<br>
-    <strong>Car: </strong>{{ order.car }}<br>
-    <strong>Date: </strong>{{ order.date }}<br>
-    <strong>Total Price: ${{ total_price }}</strong><br>
-    <strong>Order Entries:</strong>
+    <h1>{% trans "order detail"|capfirst %}</h1>
+    <strong>{% trans "order"|capfirst %}#: </strong>{{ order.id }}<br>
+    <strong>{% trans "car"|capfirst %}: </strong>{{ order.car }}<br>
+    <strong>{% trans "date"|capfirst %}: </strong>{{ order.date }}<br>
+    <strong>{% trans "issue"|capfirst %}: </strong>{{ order.car.issue|safe }}<br>
+    <strong>{% trans "total price"|capfirst %}: ${{ total_price }}</strong><br>
+    <strong>{% trans "order entries"|capfirst %}:</strong>
     <ul>
         {% for entry in order.order_entries.all %}
         <li>
             {{ entry.service }} {{entry.quantity}} ${{ entry.price }}
-            {% if entry.status == "new" %}
-            <span style="color: blue;">{{ entry.status }}</span>
-            {% elif entry.status == "processing" %}
-            <span style="color: orange;">{{ entry.status }}</span>
-            {% elif entry.status == "delivered" %}
-            <span style="color: green;">{{ entry.status }}</span>
-            {% elif entry.status == "cancelled" %}
-            <span style="color: red;">{{ entry.status }}</span>
-            {% else %}
-            {{ entry.status }}
-            {% endif %}
         </li>
         {% empty %}
-        <li>No order entries found.</li>
+        <li>{% trans "no orders found"|capfirst %}.</li>
         {% endfor %}
         </ul>
-        
-{% endblock %}
+    <h2>{% trans "comments"|capfirst %}</h2>
+    {% if user.is_superuser or user.is_staff or user == order.car.customer %}
+        <form method="post" action="{{ request.path }}">
+        <h3>{% trans "leave your comment"|capfirst %}</h3>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">{% trans "post"|capfirst %}</button>
+        </form>
+    {% else %}
+        <p class="box box-info">
+            {% trans "only superusers, staff members, and authors can post comments."|capfirst %}
+        </p>
+    {% endif %}
+    {% if order.reviews.count > 0 %}
+        <ul>
+            {% for review in order.reviews.all %}
+            <li>{{ review.reviewed_at }} {% trans "by"|capfirst %} <a href="{% url 'profile' review.reviewer.id %}">
+                {% if review.reviewer.profile.picture %}
+                    <img src="{{ review.reviewer.profile.picture.url }}" class="user-avatar">
+                {% endif %}
+                {{ review.reviewer }}</a><br>
+                    {{ review.content }}
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}    
+{% endblock content %}

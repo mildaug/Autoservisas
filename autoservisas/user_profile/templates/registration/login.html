@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
-{% block title %}Login to {{ block.super }}{% endblock title %}
+{% load static i18n %}
+{% block title %}{% trans "login to"|capfirst %} {{ block.super }}{% endblock title %}
 {% block content %}
-<h1>Login to Milda's garage</h1>
+<h1>{% trans "login to Milda's garage"|capfirst %}</h1>
 {% if form.errors %}
-<p class="box box-error">Login error. Please try again.</p>
+<p class="box box-error">{% trans "login error. Please, try again."|capfirst %}</p>
 {% endif %}
 <form method="post" action="{% url 'login' %}">
 {% csrf_token %}
 {{ form.as_p }}
+{% if request.GET.next and '/accounts/' not in request.GET.next %}
+    <input type="hidden" name="next" value="{{ request.GET.next }}">
+{% endif %}
 <p><button type="submit">Log in</button></p>
 </form>
-<p><a href="{% url 'password_reset' %}">Forgot password?</a></p>
-<p>If you do not have an account, you can sign up once the registration will be open.
+<p><a href="{% url 'password_reset' %}">{% trans "Forgot password?"|capfirst %}</a></p>
+<p>{% trans "if you do not have an account, please"|capfirst %} <a href="{% url 'signup' %}">{% trans "sign up"|capfirst %}</a>.
 {% endblock content %}

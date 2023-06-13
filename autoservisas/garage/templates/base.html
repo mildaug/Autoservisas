@@ -1,38 +1,58 @@
 <!DOCTYPE html>
-{% load static %}
-<html lang="en">
+{% load static i18n %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<html lang="{{ LANGUAGE_CODE }}">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Milda's garage{% endblock title %}</title>
+    <title>{% block title %} {% trans "milda's garage"|capfirst %} {% endblock title %}</title>
     <link rel="stylesheet" href="/static/css/style.css">
 </head>
 <body>
 <header>
     <ul class="nav">
-        <li class="logo">&#128663; Garage</li>
-        <li><a href="{% url 'index' %}">Home</a></li>
-        <li><a href="{% url 'service_list' %}">Services</a></li>
-        <li><a href="{% url 'car_list' %}">Cars</a></li>
-        <li><a href="{% url 'order_list' %}">Orders</a></li>
+        <li class="logo">&#128663; {% trans "garage"|capfirst %}</li>
+        <li><a href="{% url 'index' %}">{% trans "home"|capfirst %}</a></li>
+        <li><a href="{% url 'service_list' %}">{% trans "services"|capfirst %}</a></li>
+        <li><a href="{% url 'car_list' %}">{% trans "cars"|capfirst %}</a></li>
+        <li><a href="{% url 'order_list' %}">{% trans "orders"|capfirst %}</a></li>
         {% if user.is_authenticated %}
-        <li class="user">
-            &#128100; {{ user.username }}
-        </li>
-        <li><a href="{% url 'logout' %}">Logout</a></li>
-        <li><a href="{% url 'user_orders_list' %}">My Orders</a></li>
+        <li><a href="{% url 'profile' %}">&#128100; {{ user.get_username }}</a></li>
+        <li><a href="{% url 'logout' %}"> {% trans "logout"|capfirst %} </a></li>
+        <li><a href="{% url 'user_car_list' %}">{% trans "my cars"|capfirst %}</a></li>
+        <li><a href="{% url 'user_orders_list' %}">{% trans "my orders"|capfirst %}</a></li>
     {% else %}
-        <li><a href="{% url 'login' %}">Login</a></li>
+        <li><a href="{% url 'login' %}">{% trans "login"|capfirst %}</a></li>
+        <li><a href="{% url 'signup' %}">{% trans "sign up"|capfirst %} </a></li>
     {% endif %}
     {% if user.is_authenticated %}
         {% if user.is_staff or user.is_superuser %}
-            <li><a href="{% url 'admin:index' %}">Admin</a></li>
+            <li><a href="{% url 'admin:index' %}">{% trans "admin"|capfirst %}</a></li>
+            <li><a href="{% url 'signup' %}">{% trans "sign up"|capfirst %}</a></li>
         {% endif %}
     {% endif %}
+    <form action="{% url 'set_language' %}" method="post">
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{{ redirect_to }}">
+        <select name="language" onchange="this.form.submit();">
+            {% for lang in LANGUAGES %}
+                <option value="{{ lang.0 }}" {% if lang.0 == LANGUAGE_CODE %}selected{% endif %}>
+                    {{ lang.1 }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
     </ul>
 </header>
-<main>{% block content %}
+<main>
+    {% if messages %}
+    {% for message in messages %}
+        <p class="box box-{{ message.tags }}">{{ message }}</p>
+    {% endfor %}
+{% endif %}
+{% block content %}
 {% endblock content %}</main>
 <footer><p>&copy; 2023 Milda</p></footer>
 </body>

@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2023-06-12 15:31+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n % 10 == 1 && (n % 100 > 19 || n % 100 < "
+"11) ? 0 : (n % 10 >= 2 && n % 10 <=9) && (n % 100 > 19 || n % 100 < 11) ? "
+"1 : n % 1 != 0 ? 2: 3);\n"
+
+#: .\user_profile\models.py:11
+msgid "user"
+msgstr "vartotojas"
+
+#: .\user_profile\models.py:16
+msgid "picture"
+msgstr "nuotrauka"
+
+#: .\user_profile\models.py:19
+#: .\user_profile\templates\user_profile\profile.html:3
+#: .\user_profile\templates\user_profile\profile_update.html:3
+#: .\user_profile\templates\user_profile\profile_update.html:5
+msgid "profile"
+msgstr "profilis"
+
+#: .\user_profile\models.py:20
+msgid "profiles"
+msgstr "profiliai"
+
+#: .\user_profile\templates\registration\logged_out.html:3
+msgid "bye!"
+msgstr "iki!"
+
+#: .\user_profile\templates\registration\logged_out.html:5
+msgid "see you later, aligator"
+msgstr "Iki pasimatymo vėliau!"
+
+#: .\user_profile\templates\registration\logged_out.html:6
+#: .\user_profile\templates\registration\password_reset_complete.html:6
+msgid "log in"
+msgstr "prisijungti"
+
+#: .\user_profile\templates\registration\logged_out.html:6
+msgid "again"
+msgstr "dar kartą"
+
+#: .\user_profile\templates\registration\login.html:3
+msgid "login to"
+msgstr "prisijungti į"
+
+#: .\user_profile\templates\registration\login.html:5
+msgid "login to Milda's garage"
+msgstr "prisijungti į Mildos garažą"
+
+#: .\user_profile\templates\registration\login.html:7
+msgid "login error. Please, try again."
+msgstr "prisijungti nepavyko. Prašome pabandyti dar kartą."
+
+#: .\user_profile\templates\registration\login.html:17
+msgid "Forgot password?"
+msgstr "Pamiršote slaptažodį?"
+
+#: .\user_profile\templates\registration\login.html:18
+msgid "if you do not have an account, please"
+msgstr "Jeigu neturite paskyros, prašome"
+
+#: .\user_profile\templates\registration\login.html:18
+msgid "sign up"
+msgstr "registruotis"
+
+#: .\user_profile\templates\registration\password_reset_complete.html:3
+msgid "password changed at"
+msgstr "slaptažodis pakeistas"
+
+#: .\user_profile\templates\registration\password_reset_complete.html:5
+msgid "password has been changed successfully"
+msgstr "Slaptažodis pakeistas sėkmingai"
+
+#: .\user_profile\templates\registration\password_reset_complete.html:6
+msgid "you can now"
+msgstr "Dabar galite"
+
+#: .\user_profile\templates\registration\password_reset_complete.html:6
+msgid "with your new password."
+msgstr "su savo naujuoju slaptažodžiu."
+
+#: .\user_profile\templates\registration\password_reset_confirm.html:3
+#: .\user_profile\templates\registration\password_reset_confirm.html:5
+#: .\user_profile\templates\registration\password_reset_form.html:5
+msgid "password reset"
+msgstr "slaptažodžio atnaujinimas"
+
+#: .\user_profile\templates\registration\password_reset_confirm.html:10
+msgid "change password"
+msgstr "pakeisti slaptažodį"
+
+#: .\user_profile\templates\registration\password_reset_confirm.html:13
+msgid "password Reset Failed: the link has expired and is no longer valid."
+msgstr "slaptažodžio pakeitimas nepavyko: nuroda nebegalioja."
+
+#: .\user_profile\templates\registration\password_reset_done.html:3
+msgid "password reset done at"
+msgstr "slaptažodžio pakeitimas atliktas"
+
+#: .\user_profile\templates\registration\password_reset_done.html:5
+msgid "check your e-mail"
+msgstr "patikrinkite savo el. paštą"
+
+#: .\user_profile\templates\registration\password_reset_done.html:6
+msgid "we have sent further instructions to your email."
+msgstr "mes jums išsiuntėme tolimesnes instrukcijas slatažodžio atnaujinimui."
+
+#: .\user_profile\templates\registration\password_reset_form.html:3
+msgid "password reset at"
+msgstr "slaptažodžio atnaujinimas"
+
+#: .\user_profile\templates\registration\password_reset_form.html:9
+msgid "confirm"
+msgstr "patvirtinti"
+
+#: .\user_profile\templates\user_profile\profile.html:14
+msgid "update profile"
+msgstr "atnaujinti profilį"
+
+#: .\user_profile\templates\user_profile\profile_update.html:3
+#: .\user_profile\templates\user_profile\profile_update.html:5
+#: .\user_profile\templates\user_profile\profile_update.html:10
+msgid "update"
+msgstr "atnaujinti"
+
+#: .\user_profile\templates\user_profile\signup.html:3
+msgid "sign up for"
+msgstr "registruotis"
+
+#: .\user_profile\templates\user_profile\signup.html:5
+msgid "sign up for Milda's garage"
+msgstr "registruotis Mildos garaže"
+
+#: .\user_profile\templates\user_profile\signup.html:9
+msgid "first name"
+msgstr "vardas"
+
+#: .\user_profile\templates\user_profile\signup.html:13
+msgid "last name"
+msgstr "pavardė"
+
+#: .\user_profile\templates\user_profile\signup.html:17
+msgid "username"
+msgstr "vartotojo vardas"
+
+#: .\user_profile\templates\user_profile\signup.html:19
+msgid "Case sensitive, must be unique."
+msgstr "Jautrus didžiosioms/mažosioms raidėms, privalo būti unikalus."
+
+#: .\user_profile\templates\user_profile\signup.html:22
+msgid "e-mail"
+msgstr "el. pašto adresas"
+
+#: .\user_profile\templates\user_profile\signup.html:26
+msgid "password"
+msgstr "slaptažodis"
+
+#: .\user_profile\templates\user_profile\signup.html:30
+msgid "confirm password"
+msgstr "patvirtinti slaptažodį"
+
+#: .\user_profile\templates\user_profile\signup.html:33
+msgid "confirm sign up"
+msgstr "patvirtinti registraciją"
+
+#: .\user_profile\templates\user_profile\signup.html:35
+msgid "if you have already an account, you can"
+msgstr "jeigu jau turite paskyrą, galite "
+
+#: .\user_profile\templates\user_profile\signup.html:35
+msgid "login"
+msgstr "prisijungti"
+
+#: .\user_profile\templates\user_profile\signup.html:35
+msgid "instead"
+msgstr " "
